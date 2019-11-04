@@ -4,7 +4,7 @@ from subprocess import call
 
 time = 5
 incidentNumber = 0
-videoFolder = "/home/pi/Desktop/Projet3/Camera/videoFiles/"
+videoFolder = "/home/pi/Desktop/Projet3/Camera/videoFiles"
 RaspVidFormat = ".h264"
 MP4Format = ".mp4"
 fileName = ""
@@ -27,7 +27,7 @@ def h264ToMp4():
 def videoCapture():
     createVideoFileName()
     # Start recording
-    camera.start_recording(fileName + RaspVidFormat)
+    camera.start_recording(videoFolder + fileName + RaspVidFormat)
     sleep(time)
     # Stop recording
     camera.stop_recording()
@@ -45,3 +45,12 @@ incidentNumber += 1
 videoCapture()
 incidentNumber += 1
 videoCapture()
+
+
+
+
+# Start recording
+#camera.start_recording("/home/pi/Desktop/Projet3/Camera/incident_1.h264")
+#sleep(5)
+#camera.stop_recording()
+#print ("New incident no.1 as been saved to /home/pi/Desktop/Projet3/Camera as incident_1.h264")

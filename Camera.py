@@ -4,19 +4,18 @@ from subprocess import call
 
 time = 5
 incidentNumber = 0
-videoFolder = "/home/pi/Desktop/Projet3/Camera/videoFiles/"
-RaspVidFormat = ".h264"
-MP4Format = ".mp4"
-fileNameInLocation = ""
+videoFolder = '/home/pi/Desktop/Projet3/Camera/videoFiles/'
+RaspVidFormat = '.h264'
+MP4Format = '.mp4'
+fileName = ''
 # Setup the camera
 camera = PiCamera()
 camera.resolution = (1920, 1080)
 
 # Fonction to create a video file name
 def createVideoFileName():
-    fileName = str(str("incident_") + str(incidentNumber))
+    fileName = ("incident_" + str(incidentNumber))
     print ("New file name is " + fileName + RaspVidFormat)
-    return fileName
 
 # Fonction to convert the video file to MP4
 def h264ToMp4():
@@ -26,11 +25,11 @@ def h264ToMp4():
 
 # Fonction to capture a video
 def videoCapture():
-    fileName = createVideoFileName()
+    createVideoFileName()
     # Start recording
-    fileNameInLocation = str(videoFolder + fileName + RaspVidFormat)
-    print(fileNameInLocation)
-    camera.start_recording(fileNameInLocation)
+    videoName = videoFolder + fileName
+    print (videoName)
+    camera.start_recording(videoName)
     sleep(time)
     # Stop recording
     camera.stop_recording()
@@ -40,14 +39,7 @@ def videoCapture():
 
 incidentNumber += 1
 videoCapture()
-incidentNumber += 1
-videoCapture()
-incidentNumber += 1
-videoCapture()
-incidentNumber += 1
-videoCapture()
-incidentNumber += 1
-videoCapture()
+
 
 
 
